@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<MachineControlParameter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GantryMax>365</GantryMax>
+  <GantryMin>0</GantryMin>
+  <GantrySpeed>6</GantrySpeed>
+  <ColliAngleMax>360</ColliAngleMax>
+  <ColliAngleMin>0</ColliAngleMin>
+  <ColliSpeed>12</ColliSpeed>
+  <TableVerticalPosStart>0</TableVerticalPosStart>
+  <TableVerticalPosMax>10</TableVerticalPosMax>
+  <TableVerticalPosMin>-410</TableVerticalPosMin>
+  <TableLongitudinalPosStart>0</TableLongitudinalPosStart>
+  <TableLongitudinalPosMax>8000</TableLongitudinalPosMax>
+  <TableLongitudinalPosMin>-800</TableLongitudinalPosMin>
+  <TableLateralPosStart>0</TableLateralPosStart>
+  <TableLateralPosMax>300</TableLateralPosMax>
+  <TableLateralPosMin>-300</TableLateralPosMin>
+  <TableRollAngleStart>0</TableRollAngleStart>
+  <TableRollAngleMax>90</TableRollAngleMax>
+  <TableRollAngleMin>-90</TableRollAngleMin>
+  <KVSource>0</KVSource>
+  <KVImager>0</KVImager>
+  <MVImager>0</MVImager>
+</MachineControlParameter>
