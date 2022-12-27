@@ -1,13 +1,7 @@
-﻿using Chica.Linac.UEInterface.Control;
-using Chica.Linac.UEInterface.Entities;
+﻿using Chica.VR.UEInterface.Comm;
+using Chica.VR.UEInterface.Control;
+using Chica.VR.UEInterface.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SDKDemo
@@ -21,12 +15,21 @@ namespace SDKDemo
 
         private void FormDemoMain_Load(object sender, EventArgs e)
         {
+            TopPack.TCPCOMM = true;
+
+            if (TopPack.TCPCOMM)
+            {
+                TCPClientHelper.Instance.Init();
+            }
+
             Accelerator.Instance.Init();
         }
 
         private void FormDemoMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Accelerator.Instance.Free();
+            if (TopPack.TCPCOMM)
+                TCPClientHelper.Instance.Close();
         }
 
         private void nmGantryAngle_KeyPress(object sender, KeyPressEventArgs e)
@@ -83,7 +86,7 @@ namespace SDKDemo
         {
             try
             {
-                Accelerator.Instance.CurVrt = (decimal)(nmCouchVrt.Value);
+                Accelerator.Instance.CurVrt = (double)(nmCouchVrt.Value);
             }
             catch (Exception ex)
             {
@@ -95,7 +98,7 @@ namespace SDKDemo
         {
             try
             {
-                Accelerator.Instance.CurLng = (decimal)(nmCouchLng.Value);
+                Accelerator.Instance.CurLng = (double)(nmCouchLng.Value);
             }
             catch (Exception ex)
             {
@@ -107,7 +110,7 @@ namespace SDKDemo
         {
             try
             {
-                Accelerator.Instance.CurLat = (decimal)(nmCouchLat.Value);
+                Accelerator.Instance.CurLat = (double)(nmCouchLat.Value);
             }
             catch (Exception ex)
             {
@@ -119,7 +122,7 @@ namespace SDKDemo
         {
             try
             {
-                Accelerator.Instance.CurCouchAngle = nmCouchAngle.Value;
+                Accelerator.Instance.CurCouchAngle = (double)nmCouchAngle.Value;
             }
             catch (Exception ex)
             {
@@ -202,7 +205,7 @@ namespace SDKDemo
 
             AcceleratorState obj = Accelerator.Instance.GetLinacStatus();
 
-            if(obj != null)
+            if (obj != null)
             {
                 gantryPlan.Text = obj.gantryAngle.ToString();
                 collPlan.Text = obj.collAngle.ToString();
